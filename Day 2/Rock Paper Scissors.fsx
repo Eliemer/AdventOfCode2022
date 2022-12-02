@@ -32,13 +32,13 @@ let strategy' =
     function
     | "A X" -> 0 + 3 // loss, Rock beats scissors
     | "A Y" -> 3 + 1 // draw, Rock draws with Rock
-    | "A Z" -> 6 + 2// win, Rock loses to Paper
-    | "B X" -> 0 + 1
-    | "B Y" -> 3 + 2
-    | "B Z" -> 6 + 3
-    | "C X" -> 0 + 2
-    | "C Y" -> 3 + 3
-    | "C Z" -> 6 + 1
+    | "A Z" -> 6 + 2 // win, Rock loses to Paper
+    | "B X" -> 0 + 1 // Paper beats Rock
+    | "B Y" -> 3 + 2 // Paper draws with Paper
+    | "B Z" -> 6 + 3 // Paper loses to Scissors
+    | "C X" -> 0 + 2 // Scissors beat Paper
+    | "C Y" -> 3 + 3 // Scissors draws Scissors
+    | "C Z" -> 6 + 1 // Scissors loses to Rock
     | _ -> failwith "Incorrect format"
 
 inputStr
