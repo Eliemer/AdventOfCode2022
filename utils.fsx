@@ -7,7 +7,7 @@ let splitBy (cond: 'a -> bool) (source: 'a seq) : 'a seq seq =
         i)
     |> Seq.map snd
 
-let splitBy' (cond: 'a -> bool) (source: 'a seq) : 'a seq seq = 
+let splitBy' (skipDelimiter: bool) (cond: 'a -> bool) (source: 'a seq) : 'a seq seq = 
 
     let inline flush (buffer: ResizeArray<'a>) =
         seq {
@@ -20,9 +20,19 @@ let splitBy' (cond: 'a -> bool) (source: 'a seq) : 'a seq seq =
         let buffer = ResizeArray()
 
         for item in source do
-            if cond item then
-                yield! flush buffer
-            buffer.Add item
+            if skipDelimiter then
+                if cond item then
+                    yield! flush buffer
+                    if not skipDelimiter then
+                        buffer.Add item
+                else
+                    buffer.Add item
+            else
+                if cond item then
+                    yield! flush buffer
+                    buffer.Add item
+                else
+                    buffer.Add item
 
         yield! flush buffer
     }
