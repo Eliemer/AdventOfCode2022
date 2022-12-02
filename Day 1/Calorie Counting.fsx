@@ -8,7 +8,7 @@ let inputString = File.ReadLines "input.txt"
 
 let totalCaloriesPerInventory =
     inputString
-    |> splitBy String.IsNullOrWhiteSpace // split by empty lines
+    |> splitBy' String.IsNullOrWhiteSpace // split by empty lines
     |> Seq.map 
         (Seq.tail // discard empty lines
         >> (Seq.map Int32.Parse) // parse int values
