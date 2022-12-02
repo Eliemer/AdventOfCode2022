@@ -13,6 +13,7 @@ let totalCaloriesPerInventory =
         (Seq.tail // discard empty lines
         >> (Seq.map Int32.Parse) // parse int values
         >> Seq.sum) // sum calories
+    |> Seq.cache
 
 // Part 1
 totalCaloriesPerInventory
