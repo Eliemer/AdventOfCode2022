@@ -21,4 +21,16 @@ inputStr
     |> Set.toList
     |> List.head
     |> prioritize)
-|> printfn "Sum of priorities: %A"
+|> printfn "Sum of priorities: %d"
+
+// Part 2
+inputStr
+|> Array.chunkBySize 3
+|> Array.sumBy (
+    Array.map set
+    >> Set.intersectMany
+    >> Set.toList
+    >> List.head
+    >> prioritize
+)
+|> printfn "Sum of Badge priorities: %d"
