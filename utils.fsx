@@ -36,3 +36,8 @@ let splitBy' (skipDelimiter: bool) (cond: 'a -> bool) (source: 'a seq) : 'a seq 
 
         yield! flush buffer
     }
+
+let splitInHalf (xs: 'a[]) : 'a[] * 'a[] =
+    let half = xs.Length / 2
+
+    xs.[..half - 1], xs.[half..]
