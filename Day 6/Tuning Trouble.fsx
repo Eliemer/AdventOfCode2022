@@ -20,4 +20,4 @@ inputStr
 |> Seq.windowed MARKER_SIZE'
 |> Seq.findIndex (fun arr -> arr.Length = (Array.distinct arr).Length)
 |> (+) MARKER_SIZE'
-|> printfn "Num of chars until start-of-packet Marker was detected: %d"
+|> printfn "Num of chars until start-of-message Marker was detected: %d"
